@@ -40,8 +40,7 @@ public class CSCI271_Assignment2_LexiTaylor {
         System.out.print("Enter second number: ");
         long num2 = input.nextLong();
 
-        CSCI271_Assignment2_LexiTaylor GCDCalc = new
-CSCI271_Assignment2_LexiTaylor();
+        CSCI271_Assignment2_LexiTaylor GCDCalc = new CSCI271_Assignment2_LexiTaylor();
         long result = GCDCalc.gcd(num1, num2);
 
         System.out.println("GCD(" + num1 + "," + num2 + ") = " + result);
@@ -49,3 +48,20 @@ CSCI271_Assignment2_LexiTaylor();
     }
 }
 
+public CSCI271_Assignment2_LexiTaylor(long n, long d) {
+    numerator = n;
+    denominator = d;
+
+    if (denominator == 0) {
+        numerator = n;
+        denominator = 0;
+        return;
+    }
+    if (denominator < 0) {
+        n = -n;
+        d = -d;
+    }
+    long g = gcd(Math.abs(n), d);
+    numerator /= g;
+    denominator /= g;
+}
