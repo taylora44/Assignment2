@@ -46,22 +46,57 @@ public class CSCI271_Assignment2_LexiTaylor {
         System.out.println("GCD(" + num1 + "," + num2 + ") = " + result);
         input.close();
     }
-}
 
-public CSCI271_Assignment2_LexiTaylor(long n, long d) {
-    numerator = n;
-    denominator = d;
-
-    if (denominator == 0) {
+    public CSCI271_Assignment2_LexiTaylor(long n, long d) {
         numerator = n;
-        denominator = 0;
-        return;
+        denominator = d;
+
+        if (denominator == 0) {
+            numerator = n;
+            denominator = 0;
+            return;
+        }
+        if (denominator < 0) {
+            n = -n;
+            d = -d;
+        }
+        long g = gcd(Math.abs(n), d);
+        numerator /= g;
+        denominator /= g;
     }
-    if (denominator < 0) {
-        n = -n;
-        d = -d;
+    public CSCI271_Assignment2_LexiTaylor(long wholenumber) {
+        this(wholenumber, 1L);
     }
-    long g = gcd(Math.abs(n), d);
-    numerator /= g;
-    denominator /= g;
+    public string toString() {
+        if (denominator == 0) {
+            if (numerator > 0) {
+                return "Infinity";
+            }
+            if (numerator < 0) {
+                return "Negative Infinity";
+            }
+            return "Not a Number";
+        }
+        if (denominator == 1) {
+            return " " + numerator;
+        }
+        return numerator + "/" + denominator;
+    }
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Number 1: ");
+        long number1 = input.nextLong();
+        System.out.print("Number 2: ");
+        long number2 = input.nextLong();
+        CSCI271_Assignment2_LexiTaylor gcdTest = new CSCI271_Assignment2_LexiTaylor();
+        System.out.println("GCD(" + number1 + "," + number2 + ") = " + gcdTest.gcd(number1, number2));
+
+        System.out.print("Fraction number: ");
+        long fn = input.nextLong();
+        System.out.print("Fraction denominator: ");
+        long fd = input.nextLong();
+        CSCI_Assignment2_LexiTaylor fracTest = new CSCI_Assignment2_LexiTaylor(fn, fd);
+        System.out.println("Fraction: " + fractTest.toString());
+        input.close();
+    }
 }
