@@ -7,10 +7,44 @@
 * Date: February 06, 2026
 *
 * Purpose
-* A program that computes exact arithmic calculations.
+* A program that computes exact arithmic calculations. These equations
+* include adding, subtracting, multiplying, dividing, negating, and 
+* putting a fraction to a power.
 *
 *************************************************************************/
+/*******************************************************************
+* I declare and confirm the following:
+* - I have not discussed this program code with anyone other than my
+* instructor or the teaching assistants assigned to this course.
+* - I have not used programming code obtained from someone else,
+* or any unauthorised sources, including the Internet, either
+* modified or unmodified.
+* - If any source code or documentation used in my program was
+* obtained from other sources, like a text book or course notes,
+* I have clearly indicated that with a proper citation in the
+* comments of my program.
+* - I have not designed this program in such a way as to defeat or
+* interfere with the normal operation of the supplied grading code.
+*
+* <Lexi Taylor>
+********************************************************************/
+
 import java.util.Scanner;
+
+/*******************************************************************
+* Class: CSCI271_Assignment2_LexiTaylor
+*
+* Purpose: This is the fraction class for the exact arithmic
+* operations. It does addition, subtraction, multiplication,
+* divition, negation, and exponentiation. All fractions go into
+* reduced fraction form.
+*
+* Interface:
+* Constructors: Fraction(long n, long d), Fraction(long n)
+* toString(): returns string
+* Arithmetic: add(), subtract(), multiply(), divide(), negate(),
+* pow(int n)
+************************************************************************/
 
 public class CSCI271_Assignment2_LexiTaylor {
     private long numerator;
@@ -23,16 +57,46 @@ public class CSCI271_Assignment2_LexiTaylor {
         return denominator;
     }
 
-    private long gcd (long a, long b) {
+/*****************************gcd fuction****************************
+* Description: gcd finds the greatest common denominator to reduce
+* the fraction
+*
+* Parameters: a = first number, b = second number
+*
+* Pre: None
+* Post: Returns gcd of a and b if over 0
+*
+* Returns: long - greatest commin divisor
+*
+* Called by: constructor
+* Calls: none
+************************************************************************/
+
+    private long gcd (long a, long b) { //this is for how to get the greatest common denominator
         if (a < 0) a = -a;
         while (b != 0) {
-            long remainder = a % b;
+            long remainder = a % b; //this is for if there is a remainder
             a = b;
             b = remainder;
         }
         if (a == 0) a = 1;
         return a;
     }
+
+/*****************************constructor****************************
+* Description: creates a reduced fraction n/d. It handles cases 
+* with infinity and positive infinity. Also NaN.
+*
+* Parameters: n = numerator, d = denominator
+*
+* Pre: None
+* Post: Stores the fraction if the denominator is 0 or -
+*
+* Returns: None
+*
+* Called by: constructor
+* Calls: gcd
+************************************************************************/
 
     public CSCI271_Assignment2_LexiTaylor(long n, long d) {
 
@@ -153,15 +217,22 @@ public class CSCI271_Assignment2_LexiTaylor {
     }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter numerator: "); //asking user for a fraction
-        long n = input.nextLong();
-        System.out.print("Enter denominator: ");
-        long d = input.nextLong();
-        CSCI271_Assignment2_LexiTaylor f = new CSCI271_Assignment2_LexiTaylor(n, d);
+        System.out.print("Enter first numerator: "); //asking user for the first fraction
+        long n1 = input.nextLong();
+        System.out.print("Enter second denominator: ");
+        long d1 = input.nextLong();
+        CSCI271_Assignment2_LexiTaylor f1 = new CSCI271_Assignment2_LexiTaylor(n1, d1);
 
-        System.out.println("Fraction: " + f);
-        CSCI271_Assignment2_LexiTaylor f1 = new CSCI271_Assignment2_LexiTaylor(n, d); //creates fraction
-        CSCI271_Assignment2_LexiTaylor f2 = new CSCI271_Assignment2_LexiTaylor(n, d);
+        System.out.print("Enter second numerator: "); //asking user for the second fraction
+        long n2 = input.nextLong();
+        System.out.print("Enter second denominator: ");
+        long d2 = input.nextLong();
+        CSCI271_Assignment2_LexiTaylor f2 = new CSCI271_Assignment2_LexiTaylor(n2, d2);
+
+        System.out.println("Fraction: " + f1);
+        System.out.println("Fraction2: " + f2);
+        CSCI271_Assignment2_LexiTaylor f1 = new CSCI271_Assignment2_LexiTaylor(n1, d1); //creates fraction
+        CSCI271_Assignment2_LexiTaylor f2 = new CSCI271_Assignment2_LexiTaylor(n2, d2);
 
         System.out.println(f1 + " + " + f2 + " = " + f1.add(f2));
         System.out.println(f1 + " - " + f2 + " = " + f1.subtract(f2));
