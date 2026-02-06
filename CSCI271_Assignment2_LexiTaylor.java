@@ -35,8 +35,6 @@ public class CSCI271_Assignment2_LexiTaylor {
     }
 
     public CSCI271_Assignment2_LexiTaylor(long n, long d) {
-        numerator = n;
-        denominator = d;
 
         if (n == 0 && d == 0) { //this if statement is for if both the numerator and denominator are 0
             numerator = 0;
@@ -63,10 +61,12 @@ public class CSCI271_Assignment2_LexiTaylor {
         n /= g; //this divides the numerator with the greatest common factor
         d /= g; //this divides the denominator with the greatest common factor
         if (n == 0) d = 1; //this is for if the numerator is 0 it will automatically make the denominator 1
+        numerator = n;
+        denominator = d;
     }
 
     public CSCI271_Assignment2_LexiTaylor(long wholenumber) {
-        this (wholeenumber, 1L); //this makes it so the constructor is in the same class
+        this (wholenumber, 1L); //this makes it so the constructor is in the same class
     }
 
     public String toString() {
@@ -136,7 +136,7 @@ public class CSCI271_Assignment2_LexiTaylor {
             return reciprocal.pow(-n);
         }
         long newNumerator = 1;
-        long numDenominator = 1;
+        long newDenominator = 1;
         long baseNumerator = numerator;
         long baseDenominator = denominator;
         int exp = n;
@@ -157,26 +157,18 @@ public class CSCI271_Assignment2_LexiTaylor {
         long n = input.nextLong();
         System.out.print("Enter denominator: ");
         long d = input.nextLong();
-        public static void main(String[] args) {
-        Scanner input = new Scanner(System.in); // *** YOU ALREADY USED SCANNER ***
-
-        // Simple test: user enters one fraction
-        System.out.print("Enter numerator: ");
-        long n = input.nextLong();
-        System.out.print("Enter denominator: ");
-        long d = input.nextLong();
         CSCI271_Assignment2_LexiTaylor f = new CSCI271_Assignment2_LexiTaylor(n, d);
 
         System.out.println("Fraction: " + f);
-        CSCI271_Assignment2_LexiTaylor f1 = new CSCI271_Assignment2_LexiTaylor(1, 2); //creates fraction
-        CSCI271_Assignment2_LexiTaylor f2 = new CSCI271_Assignment2_LexiTaylor(1, 3);
+        CSCI271_Assignment2_LexiTaylor f1 = new CSCI271_Assignment2_LexiTaylor(n, d); //creates fraction
+        CSCI271_Assignment2_LexiTaylor f2 = new CSCI271_Assignment2_LexiTaylor(n, d);
 
-        System.out.println("1/2 + 1/3 = " + f1.add(f2));
-        System.out.println("1/2 - 1/3 = " + f1.subtract(f2));
-        System.out.println("1/2 * 1/3 = " + f1.multiply(f2));
-        System.out.println("1/2 / 1/3 = " + f1.divide(f2));
-        System.out.println("negate(1/2) = " + f1.negate());
-        System.out.println("(1/2)^2 = " + f1.pow(2));
+        System.out.println(f1 + " + " + f2 + " = " + f1.add(f2));
+        System.out.println(f1 + " - " + f2 + " = " + f1.subtract(f2));
+        System.out.println(f1 + " * " + f2 + " = " + f1.multiply(f2));
+        System.out.println(f1 + " / " + f2 + " = " + f1.divide(f2));
+        System.out.println("negate(" + f1 + ") = " + f1.negate());
+        System.out.println("(" + f1 + ")^2 = " + f1.pow(2));
         input.close();
     }
 }
