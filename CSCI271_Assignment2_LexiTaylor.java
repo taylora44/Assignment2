@@ -219,9 +219,9 @@ public class CSCI271_Assignment2_LexiTaylor {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter first numerator: "); //asking user for the first fraction
         long n1 = input.nextLong();
-        System.out.print("Enter second denominator: ");
+        System.out.print("Enter first denominator: ");
         long d1 = input.nextLong();
-        CSCI271_Assignment2_LexiTaylor f1 = new CSCI271_Assignment2_LexiTaylor(n1, d1);
+        CSCI271_Assignment2_LexiTaylor f1 = new CSCI271_Assignment2_LexiTaylor(n1, d1); //makes the fraction
 
         System.out.print("Enter second numerator: "); //asking user for the second fraction
         long n2 = input.nextLong();
@@ -229,11 +229,9 @@ public class CSCI271_Assignment2_LexiTaylor {
         long d2 = input.nextLong();
         CSCI271_Assignment2_LexiTaylor f2 = new CSCI271_Assignment2_LexiTaylor(n2, d2);
 
-        System.out.println("Fraction: " + f1);
-        System.out.println("Fraction2: " + f2);
-        CSCI271_Assignment2_LexiTaylor f1 = new CSCI271_Assignment2_LexiTaylor(n1, d1); //creates fraction
-        CSCI271_Assignment2_LexiTaylor f2 = new CSCI271_Assignment2_LexiTaylor(n2, d2);
-
+        System.out.println("Fraction 1: " + f1); //print out the fractions
+        System.out.println("Fraction 2: " + f2);
+        //prints out all the arithmetic functions
         System.out.println(f1 + " + " + f2 + " = " + f1.add(f2));
         System.out.println(f1 + " - " + f2 + " = " + f1.subtract(f2));
         System.out.println(f1 + " * " + f2 + " = " + f1.multiply(f2));
